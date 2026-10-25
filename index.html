@@ -66,9 +66,9 @@ body.ws #ws{opacity:1;transform:none;pointer-events:auto}
  <div class="clk" id="clk"></div>
 </header>
 <main id="home">
- <div class="hero"><p id="sd">Portal Suprimentos · Unimed Vale do Sepotuba</p><h1><span id="gr">Olá</span>, <em>tudo em um só lugar.</em></h1><span>Suprimentos, Obras, Manutenção e Fiscal integrados. Os sistemas abertos continuam ativos enquanto você alterna entre eles.</span></div>
+ <div class="hero"><p id="sd">Portal Suprimentos · Unimed Vale do Sepotuba</p><h1><span id="gr">Olá</span>, <em>tudo em um só lugar.</em></h1><span>Suprimentos, Obras, Manutenção, Fiscal e RH integrados. Os sistemas abertos continuam ativos enquanto você alterna entre eles.</span></div>
  <div class="grid" id="grid"></div>
- <div class="ft"><span>Atalhos: <kbd>Alt</kbd>+<kbd>1</kbd>…<kbd>6</kbd> abre o sistema · <kbd>Esc</kbd> volta ao início</span><span>Unimed Vale do Sepotuba · Rua José Corsino (12), 486 W, Centro, Tangará da Serra – MT · (65) 3339-1000 · 0800 645 0531 · <a href="https://www.unimed531.coop.br" target="_blank" rel="noopener" style="color:var(--lm)">unimed531.coop.br</a></span></div>
+ <div class="ft"><span>Atalhos: <kbd>Alt</kbd>+<kbd>número</kbd> abre o sistema · <kbd>Esc</kbd> volta ao início</span><span>Unimed Vale do Sepotuba · Rua José Corsino (12), 486 W, Centro, Tangará da Serra – MT · (65) 3339-1000 · 0800 645 0531 · <a href="https://www.unimed531.coop.br" target="_blank" rel="noopener" style="color:var(--lm)">unimed531.coop.br</a></span></div>
 </main>
 <section id="ws"><div class="fw" id="fw"><div class="ldg" id="ldg"><div><div class="sp"></div>Carregando sistema…</div></div>
  <div class="nt" id="nt"><span id="ntx"></span><button id="ntb">Abrir em nova aba</button><button class="c" id="ntc">×</button></div></div></section>
@@ -80,15 +80,19 @@ nf:'<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h
 obra:'<path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6M2 12l10-8 10 8"/>',
 tool:'<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
 cnpj:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M8 11l2 2 4-4"/>',
-calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11v6M8 15h2M12 15h2M8 18h6"/>'};
+calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11v6M8 15h2M12 15h2M8 18h6"/>',
+iss:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 14l6-6"/><circle cx="9.5" cy="8.5" r="1.2"/><circle cx="14.5" cy="13.5" r="1.2"/>',
+rh:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M17 7v6M15 9.2c0-1 .9-1.7 2-1.7s2 .6 2 1.4c0 1.8-4 1.2-4 3 0 .8.9 1.4 2 1.4s2-.7 2-1.7"/>'};
 const S=[
 {r:'Monitor-de-Contratos-ADM',n:'Contratos Recorrentes',g:'Suprimentos',d:'Lançamentos mensais, vigência, alertas e conciliação com a pasta do SOLUS.',i:'doc',c:['#00995d','#0a5f55'],obs:'A leitura da pasta do SOLUS só funciona com o sistema aberto em nova aba.'},
 {r:'Conferencia-de-lan-amento',n:'Monitor de Lançamentos NF',g:'Suprimentos',d:'Acompanhamento e conferência dos lançamentos de notas fiscais.',i:'nf',c:['#11b07a','#00995d']},
 {r:'UVS_Obras',n:'Unimed Obras',g:'Obras e Manutenção',d:'Obras e orçamentos por unidade, avanço por prestador e arquivos no Drive.',i:'obra',c:['#f47920','#c45a10']},
 {r:'Manuten-o-Predial-e-Frota',n:'Manutenção Preventiva',g:'Obras e Manutenção',d:'Predial, frota e documentação legal com vencimentos e histórico.',i:'tool',c:['#8db82e','#5e8a17']},
 {r:'Consulta_enquadro_Trib',n:'Regime Tributário · CNPJ',g:'Fiscal',d:'Conferência do enquadramento tributário dos fornecedores pelo CNPJ.',i:'cnpj',c:['#0f8f8a','#0a5f55']},
-{r:'Calculadora-Fiscal',n:'Calculadora Fiscal',g:'Fiscal',d:'Cálculos de retenções e tributos para apoio às rotinas fiscais.',i:'calc',c:['#3fae6b','#1d7a47']}
-].map(s=>({...s,u:B+s.r+'/'}));
+{r:'Calculadora-Fiscal',n:'Calculadora Fiscal',g:'Fiscal',d:'Cálculos de retenções e tributos para apoio às rotinas fiscais.',i:'calc',c:['#3fae6b','#1d7a47']},
+{r:'Analise-ISS-',n:'Apuração do ISSQN',g:'Fiscal',d:'Receitas, despesas, base e ISS apurado, histórico por ano, estimativa e módulo contábil.',i:'iss',c:['#1fa38a','#0a6b5a']},
+{r:'Gestao_Folha_Sup',n:'Gestão Salarial',g:'RH',d:'Colaboradores, faixas, reajuste, promoção, férias e saldo de demitidos.',i:'rh',c:['#7a9a1f','#4f6b12']},
+].map(s=>({...s,r:s.r||s.u,u:s.u||B+s.r+'/'}));
 const $=s=>document.querySelector(s),svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
 const FR={},AB=[];let cur=null;const tilt=matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches;
 function grid(){let g0='',h='';S.forEach((s,k)=>{if(s.g!==g0){g0=s.g;h+=`<div class="gt">${s.g}</div>`}
